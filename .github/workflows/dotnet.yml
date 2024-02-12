@@ -25,4 +25,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android --no-restore
+      run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android -p:AndroidKeyStore=true -p:AndroidSigningKeyStore={cicdtest_keystore}.keystore -p:AndroidSigningKeyAlias={cicdtest_keystore} -p:AndroidSigningKeyPass={cicd123} -p:AndroidSigningStorePass={cicd123} --no-restore
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        path: |
+          ./**/*.aab
+          ./**/*.apk

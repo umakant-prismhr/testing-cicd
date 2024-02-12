@@ -29,5 +29,5 @@ jobs:
     - name: App Center CLI
       run: npm install -g appcenter-cli
     - name: Upload android build to app center
-      run: appcenter distribute release --silent --file EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk --group epaytester --token ${{APP_CENTER_SECRET}}
+      run: appcenter distribute release --silent --file EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk --group epaytester --token ${{secrets.APP_CENTER_SECRET}}
           

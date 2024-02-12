@@ -29,7 +29,7 @@ jobs:
     - name: upload artefact to App Center
       uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
       with:
-        appName: EpayWorld
-        token: e2cadd69-ac73-410a-81ce-dfa5c98f1224
+        appName: usharma-prismhr.com\EpayWorld
+        token: ba790b9a0309b44a52efec54bdf8cc257dfcd6d8
         group: epaytester
         file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk

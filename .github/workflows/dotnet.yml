@@ -25,4 +25,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet EpayWorld/EpayWorld.csproj -c Release -f net8.0-android build --no-restore
+      run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android --no-restore

@@ -27,9 +27,9 @@ jobs:
     - name: Build
       run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=cicdtest_keystore.keystore -p:AndroidSigningKeyAlias=cicdtest_keystore -p:AndroidSigningKeyPass=cicd123 -p:AndroidSigningStorePass=cicd123 --no-restore
     - name: upload artefact to App Center
-      uses: usharma-prismhr/AppCenter-Distribute-Github-Action@v1.0.3
+      uses: usharma/AppCenter-Distribute-Github-Action@v1.0.3
       with:
-        appName: usharma-prismhr\EpayWorld
+        appName: usharma\EpayWorld
         token: ba790b9a0309b44a52efec54bdf8cc257dfcd6d8
         group: epaytester
         file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk

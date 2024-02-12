@@ -31,5 +31,5 @@ jobs:
       with:
         appName: EpayWorld
         token: e2cadd69-ac73-410a-81ce-dfa5c98f1224
-        group: Testers
+        group: epaytester
         file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk

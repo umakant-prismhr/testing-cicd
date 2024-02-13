@@ -26,15 +26,12 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=cicdtest_keystore.keystore -p:AndroidSigningKeyAlias=cicdtest_keystore -p:AndroidSigningKeyPass=cicd123 -p:AndroidSigningStorePass=cicd123 --no-restore
-    - name: Locate APK file
-      run: |
-          find . -name '*.apk'
     - name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1
+      uses: Coxxs/AppCenter-Github-Action@v1
       with:
-          appName: EpayWorld
+          appName: usharma123/EpayWorld
           token: ${{secrets.APP_CENTER_SECRET}}
-          group: Testers
-          file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk    <<
+          group: epaytester
+          file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk
           notifyTesters: true
           debug: true      

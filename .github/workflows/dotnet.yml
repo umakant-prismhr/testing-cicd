@@ -24,5 +24,5 @@ jobs:
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
+    - name: Build iOS app
       run: dotnet build -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=50996 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/

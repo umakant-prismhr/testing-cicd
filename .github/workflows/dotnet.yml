@@ -19,10 +19,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 7.0.x
     - name: Install .NET MAUI
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=50996 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+      run: dotnet build -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=50996 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/

@@ -24,15 +24,5 @@ jobs:
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - uses: apple-actions/import-codesign-certs@v2
-      with: 
-       p12-file-base64: ${{ secrets.CERTIFICATE_P12 }}
-       p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }} 
-    - name: Download Provisioning Profiles
-      id: provisioning
-      uses: apple-actions/download-provisioning-profiles@v1
-      with: 
-       bundle-id: ${{ secrets.PACKAGE_NAME }}
-       profile-type: 'IOS_APP_STORE'
     - name: Build
       run: dotnet build -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/

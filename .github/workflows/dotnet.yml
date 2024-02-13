@@ -25,4 +25,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+      run: dotnet build -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/

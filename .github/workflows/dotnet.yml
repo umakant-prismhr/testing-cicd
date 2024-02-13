@@ -20,9 +20,18 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
-    - name: Install .NET MAUI
+    - name: Install .NET MAUI Workload
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:ServerAddress=${{secrets.MACIP}} -p:ServerUser=${{secrets.SERVERUSER}} -p:ServerPassword=${{secrets.SERVERPASSWORD}} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/tlmdev/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+    - name: Building android app
+      run: dotnet build EpayWorld/EpayWorld.csproj -c Release -f net8.0-android -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=cicdtest_keystore.keystore -p:AndroidSigningKeyAlias=cicdtest_keystore -p:AndroidSigningKeyPass=cicd123 -p:AndroidSigningStorePass=cicd123 --no-restore
+    - name: upload artefact to App Center
+      uses: Coxxs/AppCenter-Github-Action@v1
+      with:
+          appName: usharma123/EpayWorld
+          token: ${{secrets.APP_CENTER_SECRET}}
+          group: epaytester
+          file: EpayWorld\bin\Release\net8.0-android\com.companyname.epayworld-Signed.apk
+          notifyTesters: true
+          debug: true      

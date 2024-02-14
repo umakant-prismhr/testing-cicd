@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -24,5 +24,14 @@ jobs:
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build iOS app
-      run: dotnet build -f net7.0-ios -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
+    - name: publish iOS app
+      run: dotnet publish -f net7.0-ios -c release -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
+    - name: upload artefact to App Center
+      uses: Coxxs/AppCenter-Github-Action@v1
+      with:
+          appName: usharma123/iOSEpayWorld
+          token: ${{secrets.IOS_APP_CENTER_TOKEN}}
+          group: epaytester
+          file: EpayWorld/bin/Release/net7.0-ios/publish/EpayWorld.ipa
+          notifyTesters: true
+          debug: true

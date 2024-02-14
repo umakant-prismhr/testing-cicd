@@ -24,10 +24,8 @@ jobs:
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build iOS app
-      run: dotnet build -f net7.0-ios -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
     - name: publish iOS app
-      run: dotnet publish -f net7.0-ios -c release -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
+      run: dotnet publish -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}} -p:MtouchLink=None
     - name: upload artefact to App Center
       uses: Coxxs/AppCenter-Github-Action@v1
       with:

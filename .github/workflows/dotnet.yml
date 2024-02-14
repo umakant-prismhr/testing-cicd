@@ -24,7 +24,7 @@ jobs:
       run: dotnet workload install maui
     - name: Restore dependencies
       run: dotnet restore
-    - name: build iOS app
+    - name: Build iOS app
       run: dotnet build -f net7.0-ios -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
     - name: publish iOS app
       run: dotnet publish -f net7.0-ios -c release -p:CodesignKey=${{secrets.IOSCODESIGNKEY}} -p:CodesignProvision=${{secrets.PROVISIONALPROFILE}}
